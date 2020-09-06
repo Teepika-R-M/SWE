@@ -1,0 +1,7 @@
+---
+- name: Tomcat deployment playbook
+  hosts: centos
+  become: yes     
+  become_method: sudo
+  roles:
+    - tomcat

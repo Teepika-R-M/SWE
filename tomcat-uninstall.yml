@@ -1,0 +1,22 @@
+- name: Remove Tomcat Application server
+  hosts: centos
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Stop Tomcat
+      command: /usr/share/tomcat/bin/shutdown.sh
+
+    - name: Remove Tomcat
+      file:
+       path: /usr/share/tomcat
+       state: absent
+
+    - name: Remove user "tomcat"
+      user:
+       name: tomcat
+       state: absent
+
+    - name: Remove group "tomcat"
+      group:
+       name: tomcat
+       state: absent
